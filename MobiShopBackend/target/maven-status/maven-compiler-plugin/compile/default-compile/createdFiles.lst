@@ -1,0 +1,10 @@
+com\MobiShop\MobiShopBackend\dao\SupplierDAO.class
+com\MobiShop\MobiShopBackend\dao\CategoryDAO.class
+com\MobiShop\MobiShopBackend\model\Supplier.class
+com\MobiShop\MobiShopBackend\model\Category.class
+com\MobiShop\MobiShopBackend\config\ApplicationConfig.class
+com\MobiShop\MobiShopBackend\App.class
+com\MobiShop\MobiShopBackend\model\User.class
+com\MobiShop\MobiShopBackend\model\Product.class
+com\MobiShop\MobiShopBackend\dao\ProductDAO.class
+com\MobiShop\MobiShopBackend\dao\UserDAO.class
