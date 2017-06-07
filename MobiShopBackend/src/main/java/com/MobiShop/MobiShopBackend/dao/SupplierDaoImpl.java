@@ -9,74 +9,74 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.MobiShop.MobiShopBackend.model.Category;
+import com.MobiShop.MobiShopBackend.model.Supplier;
 
-@Repository("categoryDAO")
-public class CategoryDaoImpl implements CategoryDao{
-public CategoryDaoImpl() {
+@Repository("supplierDAO")
+public class SupplierDaoImpl implements SupplierDao{
+public SupplierDaoImpl() {
 	
 }
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	public CategoryDaoImpl(SessionFactory sessionFactory)
+	public SupplierDaoImpl(SessionFactory sessionFactory)
 	{
 		this.sessionFactory=sessionFactory;
 	}
 	@Transactional
-	public Category get(String id) {
+	public Supplier get(int id) {
 
 	
-		String hql = "from Category where id='" + id + "'";
+		String hql = "from Supplier where id='" + id + "'";
 		Session session = sessionFactory.openSession();		
 		Query query = session.createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Category> listCategory = (List<Category>) query.list();
-		if (listCategory != null && !listCategory.isEmpty()) {			
-			return listCategory.get(0);
+		List<Supplier> listSupplier = (List<Supplier>) query.list();
+		if (listSupplier != null && !listSupplier.isEmpty()) {			
+			return listSupplier.get(0);
 		}
 		return null;
 	}
 
 	@Transactional
-	public Category getByName(String name) {
+	public Supplier getByName(String name) {
 
-		String hql = "from Category where name='" + name + "'";
+		String hql = "from Supplier where name='" + name + "'";
 		
 		
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
-		List<Category> listCategory = (List<Category>) query.list();
+		List<Supplier> listSupplier = (List<Supplier>) query.list();
 
-		if (listCategory != null && !listCategory.isEmpty()) {
+		if (listSupplier != null && !listSupplier.isEmpty()) {
 		
-			return listCategory.get(0);
+			return listSupplier.get(0);
 		}
 
 		return null;
 	}
 	@Transactional
-	public void insertCategory(Category category)
+	public void insertSupplier(Supplier supplier)
 	{
 		Session session=sessionFactory.getCurrentSession();
-		session.saveOrUpdate(category);
+		session.saveOrUpdate(supplier);
 	}
 	
 	@Transactional 
-	public void deleteCategory(int catid)
+	public void deleteSupplier(int suppid)
 	{
 		Session session=sessionFactory.getCurrentSession();
-		Category category=(Category)session.get(Category.class,catid);
-		session.delete(category);
+		Supplier supplier=(Supplier)session.get(Supplier.class,suppid);
+		session.delete(supplier);
 	}
 	
-	public List<Category> retrieve()
+	public List<Supplier> retrieve()
 	{
 		Session session=sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<Category> list=session.createQuery("from Category").list();
+		List<Supplier> list=session.createQuery("from Supplier").list();
 		session.close();
 		return list;
 	}

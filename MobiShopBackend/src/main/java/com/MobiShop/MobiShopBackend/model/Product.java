@@ -1,18 +1,36 @@
 package com.MobiShop.MobiShopBackend.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
+@Component
 @Table(name="Product")
-public class Product {
+public class Product implements Serializable {
 	
 	@Id
 	int prodid;
 	
 	String prodname, desc;
 	int price, stock, catid, suppid;
+	
+	@Transient
+    private MultipartFile itemImage;
+	
+	public MultipartFile getItemImage() {
+		return itemImage;
+	}
+
+	public void setItemImage(MultipartFile itemImage) {
+		this.itemImage = itemImage;
+	}
 	public int getProdid() {
 		return prodid;
 	}

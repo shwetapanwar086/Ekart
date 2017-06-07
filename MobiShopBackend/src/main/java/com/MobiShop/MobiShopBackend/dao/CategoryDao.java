@@ -8,4 +8,9 @@ public interface CategoryDao {
 	public void insertCategory(Category category);
 	public void deleteCategory(int catid);
 	public List<Category> retrieve();
+	
+	public Category get(String id);
+
+	public Category getByName(String name);
+
 }

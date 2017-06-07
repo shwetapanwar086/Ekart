@@ -1,20 +1,24 @@
 package com.MobiShop.MobiShopBackend.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
 @Entity
 @Component
 @Table(name="category")
 public class Category {
 
 	@Id
-	int catid;
+	public int catid;
 	
-	String catname, catdesc;
+	public String catname, catdesc;
 
 	public int getCatid() {
 		return catid;
@@ -42,3 +46,4 @@ public class Category {
 	
 	
 }
+

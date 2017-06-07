@@ -1,1 +1,4 @@
-com\MobiShop\MobiShopBackend\AppTest.class
+com\MobiShop\MobiShopBackend\UserTest.class
+com\MobiShop\MobiShopBackend\CategoryTest.class
+com\MobiShop\MobiShopBackend\ProductTest.class
+com\MobiShop\MobiShopBackend\SupplierTest.class

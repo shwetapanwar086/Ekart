@@ -15,9 +15,10 @@ public class CategoryTest {
 		 
 		 CategoryDao categorydao=(CategoryDao)context.getBean("categoryDAO");
 		 
-		 category.setCatid(1);
-		 category.setCatname("abc");
-	     category.setCatdesc("reliacce");
+		 category.setCatid(101);
+		 category.setCatname("iphone");
+	     category.setCatdesc("iphone 6s");
+	     
 	     categorydao.insertCategory(category);
 	
 	}

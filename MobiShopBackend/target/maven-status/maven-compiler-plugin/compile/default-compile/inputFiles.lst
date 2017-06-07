@@ -1,10 +1,17 @@
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Product.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\ProductDAO.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\UserDAO.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Supplier.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\User.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\CategoryDAO.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\App.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\config\ApplicationConfig.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\SupplierDAO.java
-F:\shwetagit\shweta-mobishop\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Category.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\ProductDao.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\SupplierDao.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\UserDaoImpl.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\User.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\CategoryDao.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\SupplierDaoImpl.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\UsersDetailDao.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\CategoryDaoImpl.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Product.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Supplier.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\UserDao.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\config\ApplicationConfig.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\UsersDetailDaoImpl.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\Category.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\UsersDetail.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\model\UserRole.java
+F:\new workspace\MobiShopBackend\src\main\java\com\MobiShop\MobiShopBackend\dao\ProductDaoImpl.java

@@ -23,14 +23,14 @@ import com.MobiShop.MobiShopBackend.model.*;
 public class ApplicationConfig {
 	
 	private SessionFactory sessionFactory;
-	
+	@Bean(name="dataSource")
 	public DataSource getH2DataSource()
 	{
 		System.out.println("Data Source Method");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/newshweta");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/newshweta1");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		
@@ -53,7 +53,7 @@ public class ApplicationConfig {
 	@Bean(name="sessionFactory")
 	public SessionFactory getSessionFactory()
 	{
-		System.out.println("SessionFacotry Method -Enterted");
+		System.out.println("SessionFactory Method -Enterted");
 		
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(getH2DataSource());
 		sessionBuilder.addProperties(getHibernateProperties());
@@ -61,33 +61,19 @@ public class ApplicationConfig {
 		sessionBuilder.addAnnotatedClass(Category.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(UserRole.class);
+		sessionBuilder.addAnnotatedClass(UsersDetail.class);
 		SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
 		
 		System.out.println("SessionFactory Object Created");
 		return sessionFactory;
 	}
+	
 	@Bean(name="productDAO")
-	public ProductDAO getProductDAO(SessionFactory sessionFactory)
+	public ProductDaoImpl getProductDAO(SessionFactory sessionFactory)
 	{
-		return new ProductDAO(sessionFactory);
+		return new ProductDaoImpl(sessionFactory);
 	}
-	 @Bean(name="categoryDAO")
-	public CategoryDao getCategoryDAO(SessionFactory sessionFactory)
-	{
-		return new CategoryDaoImpl(sessionFactory);
-	}
-	 
-	 @Bean(name="supplierDAO")
-	 public SupplierDAO getSupplierDAO(SessionFactory sessionFactory)
-	 {
-		 return new SupplierDAO(sessionFactory);
-	 }
-	 
-	 @Bean(name="userDAO")
-	 public UserDAO getUserDAO(SessionFactory sessionFactory)
-	 {
-		 return new UserDAO(sessionFactory);
-	 }
 	
 	@Bean(name="transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
