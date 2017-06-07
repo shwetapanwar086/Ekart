@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html"%>
+<%@include file="Header.jsp" %>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
 <body>
-about us
+
+			<h4>About us</h4>
+
+			<p>MobiShop eStore is eCommerce web-site exclusively for Mobile
+				products and accessories. MobiShop eStore was established in the year
+				2017 and is delivering the home services to customers.</p>
+
 </body>
 </html>
+
+
+<%@include file="Footer.jsp" %>

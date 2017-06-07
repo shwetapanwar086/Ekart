@@ -3,14 +3,18 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 http://www.springframework.org/schema/context 
-http://www.springframework.org/schema/context/spring-context.xsd">
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/security
+         http://www.springframework.org/schema/security/spring-security.xsd
+">
    
    <mvc:annotation-driven />
 
-   <context:component-scan base-package="com.niit,com.MobiShop.MobiShopBackend" />
+   <context:component-scan base-package="com.MobiShop.MobiShopBackend" />
 	
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    			<property name="prefix">
@@ -26,7 +30,61 @@ http://www.springframework.org/schema/context/spring-context.xsd">
    		<property name="maxUploadSize" value="100000" />
    </bean> 
    
-   <mvc:resources mapping="/resources/**" location="/resources/" />    
+   <mvc:resources mapping="/resources/**" location="/resources/" /> 
+   
+   
+   
+   <security:http auto-config="true">
+		<security:intercept-url pattern="/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/categories/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/category/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/products/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/product/add/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/product/remove/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/product/edit/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/supplier/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/suppliers/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/user/**"
+			access="ROLE_USER" />
+		<security:intercept-url pattern="/usercart/**"
+			access="ROLE_USER" />
+		<security:intercept-url pattern="/user/cart/**"
+			access="ROLE_USER" />
+
+		<security:form-login login-page="/login"
+			default-target-url="/" authentication-failure-url="/login?error"
+			username-parameter="username" password-parameter="password" />
+		<security:logout logout-success-url="/login?logout" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				authorities-by-username-query="SELECT username, role From userrole WHERE username = ?"
+				users-by-username-query="SELECT username, password, enabled FROM user WHERE username = ?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean
+				class="org.springframework.security.web.bind.support.AuthenticationPrincipalArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+   
+   
  </beans>
  
  
