@@ -10,9 +10,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.MobiShop.MobiShopBackend.model.Cart;
 import com.MobiShop.MobiShopBackend.model.User;
 import com.MobiShop.MobiShopBackend.model.UserRole;
 import com.MobiShop.MobiShopBackend.model.UsersDetail;
+
 
 
 @Repository("usersDetailDAO")
@@ -24,9 +26,9 @@ public class UsersDetailDaoImpl implements UsersDetailDao{
  
     public void addUser(UsersDetail usersDetail) {
     	
-        Session session = sessionFactory.openSession();
+Session session = sessionFactory.openSession();
         
-        session.saveOrUpdate(usersDetail);
+      /*  session.saveOrUpdate(usersDetail);*/
        
         User newUser = new User();
         newUser.setUsername(usersDetail.getUsername());
@@ -41,13 +43,13 @@ public class UsersDetailDaoImpl implements UsersDetailDao{
         session.saveOrUpdate(newUser);
         session.saveOrUpdate(newUserRole);
        
-       /*Cart newCart = new Cart();
+       Cart newCart = new Cart();
        newCart.setUsersDetail(usersDetail);
         
         usersDetail.setCart(newCart);
-        */
+        session.saveOrUpdate(newCart);
         session.saveOrUpdate(usersDetail);
-      /*  session.saveOrUpdate(newCart);*/
+       
        
         session.flush();
     }

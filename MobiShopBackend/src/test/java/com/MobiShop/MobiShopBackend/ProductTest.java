@@ -18,21 +18,6 @@ public class ProductTest {
 		
 		ProductDao productdao = (ProductDao)context.getBean("productDAO");
 		
-		product.setProdid(1001);
-		product.setProdname("iphone6s");
-		product.setCatid(101);
-		product.setSuppid(10001);
-		product.setPrice(20000);
-		product.setStock(10);
-		product.setDesc("This is a 4G Mobile");
-		
-		product.setProdid(1002);
-		product.setProdname("iphone7");
-		product.setCatid(102);
-		product.setSuppid(10002);
-		product.setPrice(30000);
-		product.setStock(10);
-		product.setDesc("This is a 4G Mobile with advanced features"); 
 		
 	/*  product.setProdid(1003);
 		product.setProdname("iphone7s");
@@ -42,7 +27,7 @@ public class ProductTest {
 		product.setStock(20);
 		product.setDesc("This is a 4G Mobile available in 32GB and 64GB memmory");
 		*/
-		productdao.insertProduct(product);
+		/*productdao.insertProduct(product);*/
 		System.out.println("Product Inserted");
 		
 		/*productdao.deleteProduct(1002);

@@ -15,10 +15,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 @Entity
 public class UsersDetail implements Serializable{
 	
-	
+
 	private static final long serialVersionUID = 8L;
 
 	@Id
@@ -45,13 +47,27 @@ public class UsersDetail implements Serializable{
 	@Column(unique = true)
 	private String userPhone;	
 	
-	
+	@OneToOne
+	@JoinColumn(name = "cartId")
+	@JsonIgnore
+	private Cart cart;
 	 
 	@NotEmpty (message = "Password can not be empty.")
     private String password;
 
     private boolean enabled;
 
+
+	 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	
  
     public String getUserEmail() {
 		return userEmail;

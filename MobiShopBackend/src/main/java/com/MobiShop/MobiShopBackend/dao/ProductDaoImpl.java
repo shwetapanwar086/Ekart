@@ -2,6 +2,7 @@ package com.MobiShop.MobiShopBackend.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,26 +14,97 @@ import com.MobiShop.MobiShopBackend.model.Product;
 
 @Repository("productDAO")
 public class ProductDaoImpl implements ProductDao{
-public ProductDaoImpl() {
-	
-}
-	@Autowired
-	SessionFactory sessionFactory;
-	
-	public ProductDaoImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
-	}
-	@Transactional
-	public Product get(int id) {
 
+	//SAVE AND UPDATE METHODS NOT NEEDED...... REMOVE IT
 	
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	/*public ProductDAOImpl( ) {
+			
+	}
+	
+	public ProductDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;		
+	}*/
+
+	@Transactional
+	public boolean save(Product product) {
+		// TODO Auto-generated method stub
+
+		try {
+			
+			Session session = sessionFactory.openSession();
+			
+			session.save(product);
+			return true;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean saveOrUpdate(Product product) {
+		try {
+
+			Session session = sessionFactory.openSession();
+			session.saveOrUpdate(product); 
+			session.flush();
+			
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean update(Product product) {
+		try {
+			
+			
+			
+			sessionFactory.openSession().update(product);
+			sessionFactory.openSession().flush();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean delete(String id) {
+		try {
+			Product productToDelete = new Product();
+			productToDelete.setId(id);
+			Session session = sessionFactory.openSession();
+			session.delete(productToDelete);
+			session.flush();
+			return true;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public Product get(String id) {
+
+
 		String hql = "from Product where id='" + id + "'";
-		Session session = sessionFactory.openSession();		
-		Query query = session.createQuery(hql);
+
+		Query query = sessionFactory.openSession().createQuery(hql);
+
 		@SuppressWarnings("unchecked")
 		List<Product> listProduct = (List<Product>) query.list();
-		if (listProduct != null && !listProduct.isEmpty()) {			
+
+		if (listProduct != null && !listProduct.isEmpty()) {
 			return listProduct.get(0);
 		}
 		return null;
@@ -40,64 +112,27 @@ public ProductDaoImpl() {
 
 	@Transactional
 	public Product getByName(String name) {
-
-		String hql = "from Product where name='" + name + "'";
 		
-		
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery(hql);
-		
+		String hql = "from Product where name='" + name + "'";	
+		Query query = sessionFactory.openSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> listProduct = (List<Product>) query.list();
 
 		if (listProduct != null && !listProduct.isEmpty()) {
-		
 			return listProduct.get(0);
 		}
-
 		return null;
 	}
+	
 	@Transactional
-	public void insertProduct(Product product)
-	{
-		Session session=sessionFactory.getCurrentSession();
-		session.saveOrUpdate(product);
-	}
-	
-	@Transactional 
-	public void deleteProduct(int prodid)
-	{
-		Session session=sessionFactory.getCurrentSession();
-		Product product=(Product)session.get(Product.class,prodid);
-		session.delete(prodid);
-	}
-	
-	public List<Product> retrieve()
-	{
-		Session session=sessionFactory.openSession();
-		@SuppressWarnings("unchecked")
-		List<Product> list=session.createQuery("from Product").list();
-		session.close();
+	public List<Product> list() {
+
+		String hql = "from Product ORDER BY ID ASC ";
+		Query query = sessionFactory.openSession().createQuery(hql);
+		List<Product> list = query.list();
+		if (list == null || list.isEmpty()) {
+			System.out.println("No products available");
+		}
 		return list;
 	}
-	public Product getProduct(int prodid) {
-		String hql = "from Product where id='" + prodid + "'";
-		Session session = sessionFactory.openSession();		
-		Query query = session.createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Product> listProduct = (List<Product>) query.list();
-		if (listProduct != null && !listProduct.isEmpty()) {			
-			return listProduct.get(0);
-		}
-		return null;
-	}
-	
-	
-	/*public void updateProduct(Product product) {
-		Session session=sessionFactory.getCurrentSession();
-		Product product=(Product)session.get(Product.class, product);
-		session.update(product);
-		
-	}*/
-
 }

@@ -17,11 +17,7 @@ public class SupplierTest {
 		
 		SupplierDao supplierdao = (SupplierDao)context.getBean("supplierDAO");
 		
-		supplier.setSuppid(10001);
-		supplier.setSuppname("MacRead");
-		supplier.setAddress("New Delhi");
 		
-		supplierdao.insertSupplier(supplier);
 	}
 
 }

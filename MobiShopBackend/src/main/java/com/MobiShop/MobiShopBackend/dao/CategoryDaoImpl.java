@@ -2,6 +2,7 @@ package com.MobiShop.MobiShopBackend.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,16 +14,18 @@ import com.MobiShop.MobiShopBackend.model.Category;
 
 @Repository("categoryDAO")
 public class CategoryDaoImpl implements CategoryDao{
-public CategoryDaoImpl() {
-	
-}
+
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
+
 	
-	public CategoryDaoImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
-	}
+	/*public CategoryDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;	
+		System.out.println("inside session constructor");
+		//sessionFactory = new Configuration().configure().buildSessionFactory();
+		
+	}*/
+
 	@Transactional
 	public Category get(String id) {
 
@@ -57,27 +60,57 @@ public CategoryDaoImpl() {
 
 		return null;
 	}
+	
 	@Transactional
-	public void insertCategory(Category category)
-	{
-		Session session=sessionFactory.getCurrentSession();
-		session.saveOrUpdate(category);
+	public boolean saveOrUpdate(Category category) {
+		
+		try {
+			System.out.println("inside save or update");
+			Session session = sessionFactory.openSession();
+			session.saveOrUpdate(category); 
+			session.flush();
+					
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		
+			e.printStackTrace();
+			return false;
+		}
 	}
-	
-	@Transactional 
-	public void deleteCategory(int catid)
-	{
-		Session session=sessionFactory.getCurrentSession();
-		Category category=(Category)session.get(Category.class,catid);
-		session.delete(category);
+
+
+	@Transactional
+	public boolean delete(String id) {
+		try {
+			Category categoryToDelete = new Category();
+			categoryToDelete.setId(id);
+			Session session = sessionFactory.openSession();
+			session.delete(categoryToDelete);
+			session.flush();
+			
+			return true;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+		
+			e.printStackTrace();
+			return false;
+		}
 	}
+
 	
-	public List<Category> retrieve()
-	{
-		Session session=sessionFactory.openSession();
-		@SuppressWarnings("unchecked")
-		List<Category> list=session.createQuery("from Category").list();
-		session.close();
+	@Transactional
+	public List<Category> list() {
+
+		
+		String hql = "from Category ORDER BY ID ASC";
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery(hql);
+		List<Category> list = query.list();
+		if (list == null || list.isEmpty()) {
+		System.out.println("list is empty");
+		}
+		
 		return list;
 	}
 }

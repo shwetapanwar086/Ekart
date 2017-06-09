@@ -1,9 +1,13 @@
 com\MobiShop\MobiShopBackend\dao\ProductDaoImpl.class
+com\MobiShop\MobiShopBackend\dao\CartDao.class
 com\MobiShop\MobiShopBackend\model\Category.class
 com\MobiShop\MobiShopBackend\dao\SupplierDaoImpl.class
+com\MobiShop\MobiShopBackend\dao\CartDaoImpl.class
+com\MobiShop\MobiShopBackend\dao\CartItemDao.class
 com\MobiShop\MobiShopBackend\model\User.class
 com\MobiShop\MobiShopBackend\dao\ProductDao.class
 com\MobiShop\MobiShopBackend\dao\CategoryDao.class
+com\MobiShop\MobiShopBackend\dao\CartItemDaoImpl.class
 com\MobiShop\MobiShopBackend\dao\UserDao.class
 com\MobiShop\MobiShopBackend\dao\CategoryDaoImpl.class
 com\MobiShop\MobiShopBackend\model\Supplier.class
@@ -12,6 +16,8 @@ com\MobiShop\MobiShopBackend\dao\UsersDetailDao.class
 com\MobiShop\MobiShopBackend\model\UsersDetail.class
 com\MobiShop\MobiShopBackend\config\ApplicationConfig.class
 com\MobiShop\MobiShopBackend\dao\UsersDetailDaoImpl.class
+com\MobiShop\MobiShopBackend\model\Cart.class
+com\MobiShop\MobiShopBackend\model\CartItem.class
 com\MobiShop\MobiShopBackend\model\Product.class
 com\MobiShop\MobiShopBackend\model\UserRole.class
 com\MobiShop\MobiShopBackend\dao\UserDaoImpl.class

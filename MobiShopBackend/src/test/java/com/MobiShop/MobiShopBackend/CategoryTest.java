@@ -14,12 +14,9 @@ public class CategoryTest {
 		 Category category=(Category)context.getBean("category");
 		 
 		 CategoryDao categorydao=(CategoryDao)context.getBean("categoryDAO");
+		 categorydao.delete("cat01");
 		 
-		 category.setCatid(101);
-		 category.setCatname("iphone");
-	     category.setCatdesc("iphone 6s");
-	     
-	     categorydao.insertCategory(category);
+		 
 	
 	}
 

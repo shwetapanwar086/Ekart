@@ -1,10 +1,18 @@
 package com.MobiShop.MobiShopBackend.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+
 
 @Entity
 @Component
@@ -12,24 +20,38 @@ import org.springframework.stereotype.Component;
 public class Supplier {
 	
 	@Id
-	int suppid;
+	private String id;
+	@Column(unique = true, nullable=false)
+	private String name;
+	private String address;
 	
-	String suppname, address;
-
-	public int getSuppid() {
-		return suppid;
+	@OneToMany(mappedBy="supplier", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Product> products;
+	
+	
+	public Set<Product> getProducts() {
+		return products;
 	}
 
-	public void setSuppid(int suppid) {
-		this.suppid = suppid;
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
-
-	public String getSuppname() {
-		return suppname;
+	
+	
+	@Column(name = "ID")
+	public String getId() {
+		return id;
 	}
-
-	public void setSuppname(String suppname) {
-		this.suppname = suppname;
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAddress() {

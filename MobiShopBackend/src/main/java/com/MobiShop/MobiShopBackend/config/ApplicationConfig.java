@@ -63,17 +63,14 @@ public class ApplicationConfig {
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(UserRole.class);
 		sessionBuilder.addAnnotatedClass(UsersDetail.class);
+		sessionBuilder.addAnnotatedClass(Cart.class);
+		sessionBuilder.addAnnotatedClass(CartItem.class);
 		SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
 		
 		System.out.println("SessionFactory Object Created");
 		return sessionFactory;
 	}
 	
-	@Bean(name="productDAO")
-	public ProductDaoImpl getProductDAO(SessionFactory sessionFactory)
-	{
-		return new ProductDaoImpl(sessionFactory);
-	}
 	
 	@Bean(name="transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
