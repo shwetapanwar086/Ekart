@@ -29,10 +29,10 @@ public class ApplicationConfig {
 		System.out.println("Data Source Method");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/newshweta1");
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3307/newttt");
+		dataSource.setUsername("root");
+		dataSource.setPassword("password@123");
 		
 		System.out.println("Data Source Created");
 		return dataSource;
@@ -44,7 +44,7 @@ public class ApplicationConfig {
 		Properties hibernate_prop = new Properties();
 		hibernate_prop.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernate_prop.put("hibernate.show_sql", "true");
-		hibernate_prop.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		hibernate_prop.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 	
 		System.out.println("Hibernate Property Object Created");
 		return hibernate_prop;

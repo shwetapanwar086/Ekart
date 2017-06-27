@@ -13,11 +13,15 @@ import com.MobiShop.MobiShopBackend.model.User;
 
 @Repository("userDAO")
 public class UserDaoImpl implements UserDao{
-public UserDaoImpl() {
-	
-}
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	
+	
+	public UserDaoImpl()
+	{
+		
+	}
 	
 	public UserDaoImpl(SessionFactory sessionFactory)
 	{

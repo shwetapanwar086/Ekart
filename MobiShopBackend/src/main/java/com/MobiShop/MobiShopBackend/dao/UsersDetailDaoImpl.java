@@ -26,7 +26,7 @@ public class UsersDetailDaoImpl implements UsersDetailDao{
  
     public void addUser(UsersDetail usersDetail) {
     	
-Session session = sessionFactory.openSession();
+      Session session = sessionFactory.openSession();
         
       /*  session.saveOrUpdate(usersDetail);*/
        
@@ -38,13 +38,13 @@ Session session = sessionFactory.openSession();
 
         UserRole newUserRole = new UserRole();
         newUserRole.setUsername(usersDetail.getUsername());
-        newUserRole.setRole("ROLE_USER");
+        newUserRole.setRole("ROLE_ADMIN");
         
         session.saveOrUpdate(newUser);
         session.saveOrUpdate(newUserRole);
        
-       Cart newCart = new Cart();
-       newCart.setUsersDetail(usersDetail);
+        Cart newCart = new Cart();
+        newCart.setUsersDetail(usersDetail);
         
         usersDetail.setCart(newCart);
         session.saveOrUpdate(newCart);

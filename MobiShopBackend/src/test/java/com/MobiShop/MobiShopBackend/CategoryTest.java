@@ -14,7 +14,7 @@ public class CategoryTest {
 		 Category category=(Category)context.getBean("category");
 		 
 		 CategoryDao categorydao=(CategoryDao)context.getBean("categoryDAO");
-		 categorydao.delete("cat01");
+		 //categorydao.delete("cat01");
 		 
 		 
 	
